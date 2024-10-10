@@ -5,7 +5,7 @@ public class Program {
         Employee employee1 = new Programmer("Ilya Sirenko", "IT", 2, "Python");
         employee1.work(8);
         employee1.breaks(12);
-        Employee employee2 = new Administrator("John Doe", "IT", 5, 1999.99F);
+        Employee employee2 = new Administrator("John Doesn't", "IT", 5, 1999.99F);
         employee2.work(12);
         employee2.breaks(100);
         Employee employee3 = new Manager("Jane Doe", "IT", 20, 8);
@@ -14,6 +14,8 @@ public class Program {
         Employee employee4 = new BachelorProgrammer("Idontcare Fornames", "IT", 2, "Java", "MTUCI");
         employee4.work(12);
         employee4.breaks(5);
+        System.out.print(String.format("There are currently %d employees", Employee.employeeCount));
+
     }
 }
 
@@ -21,17 +23,20 @@ abstract class Employee{
     protected String name;
     protected String department;
     protected int experience;
+    protected static int employeeCount = 0;
 
     Employee(String nname, String ndep, int nexp){
         name = nname;
         department = ndep;
         experience = nexp;
+        employeeCount += 1;
     }
 
     Employee(){
         name = "John Doe";
         department = "Undefined";
         experience = 0;
+        employeeCount += 1;
     }
 
     public void work(int hours){
